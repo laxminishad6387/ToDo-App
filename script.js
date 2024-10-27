@@ -13,6 +13,13 @@ function addtodo(inputText)
        newtodo.todoList.push(inputText);
        localStorage.setItem("todo",JSON.stringify(newtodo));
 }
+function addToDoInhtml(todoText)
+{
+      const newTodoHTML=document.getElementById("todolist");
+      const newTodoElement=document.createElement("li");
+      newTodoElement.textContent=todoText;
+      newTodoHTML.appendChild(newTodoElement);
+}
 
 
 document.addEventListener("DOMContentLoaded",()=>
@@ -25,7 +32,11 @@ document.addEventListener("DOMContentLoaded",()=>
       if(todoText=='')
             alert("please add something in todo");
       else
+      {
            addtodo(todoText);
+      addToDoInhtml(todoText);
+      inputText.value="";
+      }
 })
     inputText.addEventListener("change",()=>
 {
@@ -33,5 +44,13 @@ document.addEventListener("DOMContentLoaded",()=>
 })
     
       console.log("loaded");
-      localstorage();
+     const todos= localstorage();
+     todos.todoList.forEach(todo=>
+     {
+      const newTodoHTML=document.getElementById("todolist");
+      const newTodoElement=document.createElement("li");
+      newTodoElement.textContent=todo;
+      newTodoHTML.appendChild(newTodoElement);
+     }
+     )
 });

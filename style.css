@@ -15,7 +15,7 @@ body{
      margin: 10px auto;
      box-shadow: 0 0 10px rgba(0,0,0, 0.1);
      padding: 10px;
-     text-align: center;
+    
 }
 h1{
       text-align: center;
@@ -33,4 +33,19 @@ h1{
    color: white;
    background-color: rgb(46, 127, 177);
    cursor: pointer;
+}
+#todolist{
+      list-style: none;
+      padding: 0;
+}
+li{
+      padding: 10px;
+      border-bottom:  1px solid rgb(217, 217, 244);
+}
+li:last-child
+{
+      border-bottom: none;
+}
+li:hover{
+      background-color: rgb(198, 241, 241);
 }
