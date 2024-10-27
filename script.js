@@ -18,6 +18,23 @@ function addToDoInhtml(todoText)
       const newTodoHTML=document.getElementById("todolist");
       const newTodoElement=document.createElement("li");
       newTodoElement.textContent=todoText;
+      newTodoElement.classList.add("addItem");
+
+    const editbtn=document.createElement("button");
+    editbtn.classList.add("editbtn");
+    editbtn.textContent="Edit";
+    newTodoElement.appendChild(editbtn);
+
+    const deletebtn=document.createElement("button");
+    deletebtn.textContent="Delete";
+    deletebtn.classList.add("deletebtn");
+    newTodoElement.appendChild(deletebtn);
+
+    const completedbtn=document.createElement("button");
+    completedbtn.textContent="Completed";
+    completedbtn.classList.add("completedbtn");
+    newTodoElement.appendChild(completedbtn);
+
       newTodoHTML.appendChild(newTodoElement);
 }
 

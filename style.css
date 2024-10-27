@@ -1,5 +1,8 @@
 :root{
       --background-color:#e4e1e1;
+      --primary-color:rgb(118, 118, 248);
+      --secondar-color:rgb(221, 221, 36);
+      --ternary-color:rgb(46, 127, 177);
 }
 *{
       box-sizing: border-box;
@@ -48,4 +51,43 @@ li:last-child
 }
 li:hover{
       background-color: rgb(198, 241, 241);
+}
+#filterbtn{
+      padding: 10px 20px;
+      margin: 10px;
+      text-align: center;
+      background-color:var(--secondar-color) ;
+      transition: background-color 0.3s;
+      border: none;
+      border-radius: 5px;
+}
+#filterbtn:hover{
+  background-color: var(--ternary-color);
+}
+.addItem{
+      letter-spacing: 10px;
+}
+.editbtn{
+      padding: 10px 10px;
+      margin: 10px 10px;
+      width: 90px;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+}
+.completedbtn{
+      padding: 10px 10px;
+      margin: 10px 10px;
+      width: 90px;
+      font-weight: bold; 
+      border: none;
+      border-radius: 5px; 
+}
+.deletebtn{
+      padding: 10px 10px;
+      margin: 10px 10px;
+      width: 90px;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
 }
