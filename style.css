@@ -3,6 +3,8 @@
       --primary-color:rgb(118, 118, 248);
       --secondar-color:rgb(221, 221, 36);
       --ternary-color:rgb(46, 127, 177);
+      --first-color:rgb(202, 98, 115);
+      --last-color:rgb(241, 81, 72);
 }
 *{
       box-sizing: border-box;
@@ -52,7 +54,7 @@ li:last-child
 li:hover{
       background-color: rgb(198, 241, 241);
 }
-#filterbtn{
+.filterbtn,.editbtn,.completedbtn,.deletebtn{
       padding: 10px 20px;
       margin: 10px;
       text-align: center;
@@ -60,34 +62,36 @@ li:hover{
       transition: background-color 0.3s;
       border: none;
       border-radius: 5px;
+      font-weight: bold;
 }
-#filterbtn:hover{
+.filterbtn:hover{
   background-color: var(--ternary-color);
 }
-.addItem{
-      letter-spacing: 10px;
-}
+
 .editbtn{
-      padding: 10px 10px;
-      margin: 10px 10px;
-      width: 90px;
-      font-weight: bold;
-      border: none;
-      border-radius: 5px;
+      background-color: var(--first-color);
 }
 .completedbtn{
-      padding: 10px 10px;
-      margin: 10px 10px;
-      width: 90px;
-      font-weight: bold; 
-      border: none;
-      border-radius: 5px; 
+    background-color: var(--primary-color); 
 }
 .deletebtn{
-      padding: 10px 10px;
-      margin: 10px 10px;
-      width: 90px;
-      font-weight: bold;
-      border: none;
-      border-radius: 5px;
+   background-color: var(--last-color);
+}
+.editbtn:hover{
+      background-color:var(--secondar-color) ;
+}
+.completedbtn:hover{
+      background-color:var(--secondar-color) ;
+}
+.deletebtn:hover{
+      background-color:var(--secondar-color) ;
+}
+.addItem{
+      display: flex;
+      flex-direction: row;
+      text-align: center;
+      justify-content: space-between;
+      margin: 10px ;
+      align-items: center;
+      
 }
