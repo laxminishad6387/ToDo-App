@@ -1,18 +1,53 @@
-// const { console } = require("inspector");
-
 function localstorage()
 {
      const todos=JSON.parse(localStorage.getItem("todo"))||{"todoList":[]};
-     console.log( todos);
-     return todos
+   console.log(todos);
+     return todos;
 
 }
 function addtodo(todo)
 {
       const newtodo=localstorage();
+   
        newtodo.todoList.push(todo);
        localStorage.setItem("todo",JSON.stringify(newtodo));
 }
+function deleteTodo(id) {
+      const todos = localstorage();
+    
+      todos.todoList = todos.todoList.filter(todo => todo.id !== id);
+ 
+      localStorage.setItem("todo", JSON.stringify(todos));
+      reloadTodoList();
+  }
+  
+
+// step->1 identify the unique key
+// step->2 update the value
+// step->3 reload on localStorage
+function updateCompletedbtn(id)
+{
+   const completedtodo=localstorage();
+   for(const btn of completedtodo.todoList)
+   {
+      if(btn.id==id)
+      {
+            btn.isCompleted=true;
+           
+      }
+      localStorage.setItem("todo", JSON.stringify(completedtodo));
+      reloadTodoList();
+   }
+}
+function reloadTodoList() {
+      const todoList = document.getElementById("todolist");
+      todoList.innerHTML = ''; // Clear existing list
+      const todos = localstorage();
+      todos.todoList.forEach(todo => addToDoInhtml(todo)); // Re-render each todo
+  }
+
+
+
 function  findFilterButton(event)
 {      const todoList=document.getElementById("todolist"); 
       const element=event.target;
@@ -22,10 +57,9 @@ function  findFilterButton(event)
       const todos= localstorage();
       if(value=="All")
       {
-          
-     todos.todoList.forEach(todo=>
+        todos.todoList.forEach(todo=>
      {
-      addToDoInhtml(todo);
+         addToDoInhtml(todo);
      }
      )
       } 
@@ -71,8 +105,12 @@ function addToDoInhtml(todo)
     
 
     const completedbtn=document.createElement("button");
-    completedbtn.textContent="Completed";
+    completedbtn.textContent=todo.isCompleted?"completed":"complete";
     completedbtn.classList.add("completedbtn");
+
+
+
+
 wrapper.appendChild(editbtn);
     wrapper.appendChild(deletebtn);
   wrapper.appendChild(completedbtn);
@@ -80,6 +118,17 @@ wrapper.appendChild(editbtn);
   liElement.appendChild(textdiv);
     liElement.appendChild(wrapper);
   ulElement.appendChild(liElement);
+  completedbtn.addEventListener("click",()=>
+{
+   updateCompletedbtn(todo.id);
+  
+   completedbtn.disabled=true;
+})
+deletebtn.addEventListener("click",()=>
+{
+      deleteTodo(todo.id);
+})
+
 }
 
 
@@ -99,8 +148,8 @@ document.addEventListener("DOMContentLoaded",()=>
             alert("please add something in todo");
       else
       {
-           addtodo({text:todoText , isCompleted:false});
-      addToDoInhtml({text:todoText , isCompleted:false});
+           addtodo({text:todoText , isCompleted:false,id:Date.now(),some:"hello"});
+      addToDoInhtml({text:todoText , isCompleted:false,id:Date.now(),some:"hello"});
       inputText.value="";
       }
 })
